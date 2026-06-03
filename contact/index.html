@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact — Halley</title>
+    <meta name="description" content="Let's make something together. Get in touch with Halley." />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <style>
+      /* critical boot cover — keeps first paint behind the pine curtain so a
+         full-page navigation never flashes unstyled (esp. in dev) */
+      html,
+      body {
+        margin: 0;
+        background: #c7cfb9;
+      }
+      .transition {
+        position: fixed;
+        inset: 0;
+        z-index: 100000;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .transition__panel {
+        position: absolute;
+        inset: -1px;
+        background: #1b3a2e;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .transition {
+          display: none;
+        }
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Hanken+Grotesk:wght@300..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-page="contact">
+    <main class="contact" id="top">
+      <div class="shell contact__grid">
+        <div class="contact__inner">
+          <p class="eyebrow">Contact</p>
+          <h1 class="contact__title display">
+            Let's make<br />something <em>together.</em>
+          </h1>
+          <a class="contact__email" href="mailto:halleykimathi@gmail.com"
+            >halleykimathi@gmail.com</a>
+          
+          <a class="contact__phone" href="tel:+12687758274">+1 (268) 775-8274</a>
+          <p class="contact__note">
+            Currently I only accept one project a month. <br>
+            Do not hesitate to reach out. I would love to hear your ideas.
+          </p>
+          <nav class="contact__socials" aria-label="Social links">
+            <a href="https://github.com/" target="_blank" rel="noopener">
+              <i class="ph ph-github-logo"></i><span>GitHub</span>
+            </a>
+            <a href="https://x.com/" target="_blank" rel="noopener">
+              <i class="ph ph-x-logo"></i><span>X</span>
+            </a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener">
+              <i class="ph ph-instagram-logo"></i><span>Instagram</span>
+            </a>
+            <a href="https://wa.me/12687758274" target="_blank" rel="noopener">
+              <i class="ph ph-whatsapp-logo"></i><span>WhatsApp</span>
+            </a>
+          </nav>
+        </div>
+
+        <footer class="contact__foot">
+          <p>&copy; 2026 Halley</p>
+          <img
+            class="contact__stamp"
+            src="/brand/made-in-antigua-grey.png"
+            alt="Made in Antigua"
+          />
+          <span class="mono contact__loc">Stuff</span>
+        </footer>
+      </div>
+    </main>
+
+    <div class="transition" aria-hidden="true">
+      <div class="transition__panel"></div>
+    </div>
+
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>

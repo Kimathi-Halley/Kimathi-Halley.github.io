@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halley — Developer & Designer</title>
+    <meta
+      name="description"
+      content="Halley is a developer & designer building fast, tactile interfaces for the web."
+    />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <style>
+      /* critical boot cover — keeps first paint behind the pine curtain so a
+         full-page navigation never flashes unstyled (esp. in dev) */
+      html,
+      body {
+        margin: 0;
+        background: #c7cfb9;
+      }
+      .transition {
+        position: fixed;
+        inset: 0;
+        z-index: 100000;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .transition__panel {
+        position: absolute;
+        inset: -1px;
+        background: #1b3a2e;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .transition {
+          display: none;
+        }
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Hanken+Grotesk:wght@300..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-page="home">
+    <main class="page" id="top">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="shell hero__inner">
+          <div class="hero__meta">
+            <p></p>
+            <p class="mono hero__loc">
+              <span class="hero__coord">17&deg;&thinsp;03&prime;&thinsp;39&Prime;&thinsp;N</span>
+              <span class="hero__dot">&middot;</span>
+              <span class="hero__coord">61&deg;&thinsp;47&prime;&thinsp;47&Prime;&thinsp;W</span>
+              <span class="hero__dot">&middot;</span>
+              <span class="hero__place">Antigua</span>
+            </p>
+          </div>
+          <h1 class="hero__title display">
+            Software,<br /><em>crafted</em> with intent.
+          </h1>
+          <div class="hero__bottom">
+            <p class="hero__lede lede">
+              Fast, tactile interfaces for the web.<br>
+              Equal parts
+              engineering rigor and design obsession.
+            </p>
+            <div class="hero__actions">
+              <a class="btn" href="/projects/"
+                >View work <i class="ph ph-arrow-up-right"></i
+              ></a>
+              <a class="btn btn--ghost" href="/contact/">Say hello</a>
+            </div>
+          </div>
+        </div>
+        <a class="hero__scroll" href="#work" aria-label="Scroll to work">
+          <span class="mono">Scroll</span>
+          <i class="ph ph-arrow-down"></i>
+        </a>
+      </section>
+
+      <!-- MARQUEE -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>TypeScript</span><b>✳</b><span>React</span><b>✳</b
+          ><span>WebGL</span><b>✳</b><span>Motion Design</span><b>✳</b
+          ><span>Node</span><b>✳</b><span>GSAP</span><b>✳</b
+          ><span>Three.js</span><b>✳</b><span>UX</span><b>✳</b
+          ><span>TypeScript</span><b>✳</b><span>React</span><b>✳</b
+          ><span>WebGL</span><b>✳</b><span>Motion Design</span><b>✳</b
+          ><span>Node</span><b>✳</b><span>GSAP</span><b>✳</b
+          ><span>Three.js</span><b>✳</b><span>UX</span><b>✳</b>
+        </div>
+      </div>
+
+      <!-- SELECTED WORK -->
+      <section class="section shell work" id="work">
+        <div class="work__head">
+          <p class="eyebrow">Selected work</p>
+          <h2 class="work__heading display">A few things<br />worth showing.</h2>
+        </div>
+        <ul class="work__list">
+          <li class="work__item">
+            <a href="/projects/">
+              <span class="work__num mono">01</span>
+              <span class="work__name">Dawnes Soleil Kafe</span>
+              <span class="work__desc">Modern, fun, Caribbean Restaurant</span>
+              <span class="work__tag mono">Too elegant</span>
+              <i class="ph ph-arrow-up-right work__arrow"></i>
+            </a>
+          </li>
+          <li class="work__item">
+            <a href="/projects/">
+              <span class="work__num mono">002</span>
+              <span class="work__name">MRS Enterprise</span>
+              <span class="work__desc">HVAC, Plumbing, Electrical</span>
+              <span class="work__tag mono"> 2042 Came early.</span>
+              <i class="ph ph-arrow-up-right work__arrow"></i>
+            </a>
+          </li>
+          <li class="work__item">
+            <a href="/projects/">
+              <span class="work__num mono">0003</span>
+              <span class="work__name">Kaibe</span>
+              <span class="work__desc">A bold New School Management System for Antigua</span>
+              <span class="work__tag mono">For the Curious</span>
+              <i class="ph ph-arrow-up-right work__arrow"></i>
+            </a>
+          </li>
+        </ul>
+        <a class="work__all link" href="/projects/"
+          >View all projects <i class="ph ph-arrow-right"></i
+        ></a>
+      </section>
+
+      <!-- PHILOSOPHY -->
+      <section class="section philo">
+        <div class="shell philo__inner">
+          <p class="philo__quote display">
+            Center the &lt;div&gt; <br />and the <em>margins.</em>
+          </p>
+          <p class="philo__sub mono">&mdash;&nbsp; the details are the design</p>
+        </div>
+      </section>
+
+      <!-- SMUDGE CTA (above footer) -->
+      <a class="smudge" href="/contact/" data-smudge aria-label="Get in touch">
+        <div class="smudge__layer smudge__fore">
+          <p class="eyebrow">The Next Step</p>
+          <h2 class="display smudge__title">Have something<br />in mind?</h2>
+        </div>
+        <div class="smudge__layer smudge__back">
+          <p class="eyebrow smudge__eyebrow">Bet you didn't expect that</p>
+          <h2 class="display smudge__title">
+            Let's build<br />it <em>together.</em>
+          </h2>
+          <span class="smudge__hint mono">&longrightarrow; Contact</span>
+        </div>
+        <svg class="smudge__svg" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <filter id="smudge-goo">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="22" />
+              <feColorMatrix
+                type="matrix"
+                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 60 -14"
+              />
+            </filter>
+          </defs>
+          <mask id="smudge-mask">
+            <g class="smudge__blobs" filter="url(#smudge-goo)"></g>
+          </mask>
+        </svg>
+      </a>
+    </main>
+
+    <div class="transition" aria-hidden="true">
+      <div class="transition__panel"></div>
+    </div>
+
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>

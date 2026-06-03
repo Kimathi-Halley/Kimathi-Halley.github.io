@@ -1,0 +1,465 @@
+/* ============================================================
+   chrome — fluid canvas, blurred nav, mobile menu, footer
+   Shared across every page.
+   ============================================================ */
+
+/* ---- fluid cursor-trail canvas (sits behind everything) ---- */
+#fluid {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* ============================================================
+   NAVIGATION — PI-style blurred bar (near-invisible on flat clay)
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  padding: clamp(0.5rem, 0.35rem + 0.6vw, 0.85rem) var(--gutter);
+  pointer-events: none; /* transparent gaps stay click-through */
+}
+
+/* one feathered, blurred pill spanning the logo across to the links */
+.nav__pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.35rem 1.6rem;
+  isolation: isolate;
+}
+.nav__pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: rgba(199, 207, 185, 0.17);
+  -webkit-backdrop-filter: blur(17px) saturate(135%);
+  backdrop-filter: blur(17px) saturate(135%);
+  -webkit-mask: radial-gradient(116% 158% at 50% 50%, #000 62%, transparent 100%);
+  mask: radial-gradient(116% 158% at 50% 50%, #000 62%, transparent 100%);
+  z-index: -1;
+}
+
+.nav__brand,
+.nav__menu,
+.nav__burger {
+  pointer-events: auto;
+}
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+.nav__logo {
+  display: block;
+  height: clamp(2.3rem, 1.8rem + 1.7vw, 3rem);
+  aspect-ratio: 800 / 533;
+  background-color: var(--ink);
+  -webkit-mask: url(/brand/halley.png) left center / contain no-repeat;
+  mask: url(/brand/halley.png) left center / contain no-repeat;
+  transition: background-color 0.4s var(--ease);
+}
+.nav__brand:hover .nav__logo {
+  background-color: var(--accent);
+}
+/* keep the wordmark visible against the open (pine) mobile menu */
+.nav__pill:has(.nav__burger.is-open) .nav__logo {
+  background-color: var(--surface);
+}
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.1rem, 0.6rem + 1.4vw, 2rem);
+}
+.nav__link {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink);
+  position: relative;
+  padding: 0.4em 0;
+  transition: color 0.4s var(--ease);
+}
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1.5px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s var(--ease);
+}
+.nav__link:hover {
+  color: var(--accent);
+}
+.nav__link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.nav__link.is-active {
+  color: var(--accent);
+}
+.nav__link.is-active::after {
+  transform: scaleX(1);
+}
+/* Home — reversed/filled chip */
+.nav__link--home {
+  background: var(--ink);
+  color: var(--surface);
+  padding: 0.5em 1.05em 0.42em;
+  border-radius: 99px;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+.nav__link--home::after {
+  display: none;
+}
+.nav__link--home.is-active {
+  color: var(--surface);
+  background: var(--ink);
+}
+.nav__link--home:hover {
+  color: var(--surface);
+  background: var(--accent);
+}
+
+/* burger (mobile only) */
+.nav__burger {
+  display: none;
+  position: relative;
+  z-index: 60;
+  width: 2.6rem;
+  height: 2.6rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.nav__burger span {
+  display: block;
+  width: 24px;
+  height: 1.6px;
+  background: var(--ink);
+  transition: transform 0.4s var(--ease), background 0.4s var(--ease),
+    opacity 0.3s var(--ease);
+}
+.nav__burger.is-open span {
+  background: var(--surface);
+}
+.nav__burger.is-open span:nth-child(1) {
+  transform: translateY(3.8px) rotate(45deg);
+}
+.nav__burger.is-open span:nth-child(2) {
+  transform: translateY(-3.8px) rotate(-45deg);
+}
+
+/* ---- mobile fullscreen menu ---- */
+.navmenu {
+  position: fixed;
+  inset: 0;
+  z-index: 40; /* below the nav so the logo + close button stay on top */
+  background: var(--ink);
+  color: var(--surface);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(5.5rem, 4rem + 7vw, 7.5rem) var(--gutter) var(--gutter);
+  opacity: 0;
+  pointer-events: none;
+  clip-path: inset(0 0 100% 0);
+  transition: opacity 0.5s var(--ease), clip-path 0.7s var(--ease);
+}
+.navmenu.is-open {
+  opacity: 1;
+  pointer-events: all;
+  clip-path: inset(0 0 0% 0);
+}
+.navmenu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1em;
+}
+.navmenu__list li {
+  overflow: hidden;
+  padding-block: 0.06em;
+}
+.navmenu__list a {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 1.5rem + 6vw, 4.5rem);
+  font-weight: 360;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--surface);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4em;
+  transform: translateY(115%);
+  transition: transform 0.7s var(--ease), color 0.4s var(--ease);
+}
+.navmenu.is-open .navmenu__list a {
+  transform: translateY(0);
+}
+.navmenu.is-open .navmenu__list li:nth-child(1) a {
+  transition-delay: 0.14s;
+}
+.navmenu.is-open .navmenu__list li:nth-child(2) a {
+  transition-delay: 0.2s;
+}
+.navmenu.is-open .navmenu__list li:nth-child(3) a {
+  transition-delay: 0.26s;
+}
+.navmenu.is-open .navmenu__list li:nth-child(4) a {
+  transition-delay: 0.32s;
+}
+.navmenu__list a .num {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  transform: translateY(-0.6em);
+}
+.navmenu__list a:hover {
+  color: var(--accent);
+}
+/* Home — reversed/filled chip */
+.navmenu__list a.navmenu__home {
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 0.14em;
+  padding: 0 0.3em 0.08em;
+}
+.navmenu__list a.navmenu__home:hover {
+  background: var(--accent);
+  color: var(--surface);
+}
+.navmenu__foot {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(236, 229, 211, 0.18);
+  color: rgba(236, 229, 211, 0.7);
+}
+.navmenu__socials {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+.navmenu__socials a:hover {
+  color: var(--accent);
+}
+
+/* ============================================================
+   FOOTER — pine block rising from the clay
+   ============================================================ */
+.site-footer {
+  position: relative;
+  z-index: 1;
+  margin-top: var(--section-y);
+}
+.footer__inner {
+  position: relative;
+  background: var(--ink);
+  color: var(--surface);
+  padding: clamp(1.9rem, 1.4rem + 1.8vw, 3rem) clamp(1.6rem, 1rem + 2.2vw, 3.5rem)
+    clamp(1.3rem, 1rem + 1vw, 2rem);
+  width: min(100% - calc(var(--gutter) * 2), var(--maxw));
+  margin-inline: auto;
+  border-radius: var(--radius-lg);
+  margin-bottom: clamp(1rem, 0.5rem + 1.5vw, 2rem);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.3rem, 0.8rem + 1.8vw, 2.2rem);
+}
+.footer__inner > *:not(.footer__stampbg) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Made-in-Antigua stamp — background, slightly left + rotated */
+.footer__stampbg {
+  position: absolute;
+  z-index: 0;
+  top: 52%;
+  left: 33%;
+  transform: translate(-50%, -50%) rotate(-11deg);
+  height: min(155%, 42rem);
+  width: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  filter: invert(1);
+  mix-blend-mode: screen;
+  opacity: 0.1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* logo header, centered */
+.footer__head {
+  display: flex;
+  justify-content: center;
+}
+.footer__logo-link {
+  display: inline-flex;
+}
+.footer__logo {
+  display: block;
+  height: clamp(3.8rem, 2.6rem + 5.5vw, 8rem);
+  aspect-ratio: 800 / 533;
+  background-color: var(--surface);
+  -webkit-mask: url(/brand/halley.png) center / contain no-repeat;
+  mask: url(/brand/halley.png) center / contain no-repeat;
+  transition: background-color 0.4s var(--ease);
+}
+.footer__logo-link:hover .footer__logo {
+  background-color: var(--accent);
+}
+
+/* info bar */
+.footer__bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.footer__contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+.footer__social-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+.footer__coltitle {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+.footer__email,
+.footer__phone {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 360;
+  color: var(--surface);
+  transition: color 0.35s var(--ease);
+}
+.footer__email:hover,
+.footer__phone:hover {
+  color: var(--accent);
+}
+.footer__socials {
+  display: flex;
+  gap: 0.95rem;
+  font-size: 1.6rem;
+}
+.footer__socials a {
+  color: var(--surface);
+  transition: transform 0.35s var(--ease), color 0.35s var(--ease);
+}
+.footer__socials a:hover {
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* nav, centered */
+.footer__nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(1.5rem, 0.8rem + 2vw, 3rem);
+}
+.footer__navlink {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(236, 229, 211, 0.8);
+  transition: color 0.35s var(--ease);
+}
+.footer__navlink:hover {
+  color: var(--accent);
+}
+
+/* copyright row */
+.footer__copy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer__copy p,
+.footer__copy a {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  color: rgba(236, 229, 211, 0.55);
+}
+.footer__copy a:hover {
+  color: var(--accent);
+}
+.footer__totop {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.footer__totop i {
+  transition: transform 0.4s var(--ease);
+}
+.footer__totop:hover i {
+  transform: translateY(-3px);
+}
+
+/* ============================================================
+   responsive
+   ============================================================ */
+@media (max-width: 880px) {
+  .nav__menu {
+    display: none;
+  }
+  .nav__burger {
+    display: flex;
+  }
+  .footer__bar {
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer__copy {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+  .footer__nav {
+    flex-wrap: wrap;
+    gap: 1rem 1.4rem;
+  }
+}

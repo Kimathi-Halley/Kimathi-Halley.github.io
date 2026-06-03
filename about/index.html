@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About — Halley</title>
+    <meta
+      name="description"
+      content="On the craft of programming — principles, care, and a few kind words."
+    />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <style>
+      /* critical boot cover — keeps first paint behind the pine curtain so a
+         full-page navigation never flashes unstyled (esp. in dev) */
+      html,
+      body {
+        margin: 0;
+        background: #c7cfb9;
+      }
+      .transition {
+        position: fixed;
+        inset: 0;
+        z-index: 100000;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .transition__panel {
+        position: absolute;
+        inset: -1px;
+        background: #1b3a2e;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .transition {
+          display: none;
+        }
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Hanken+Grotesk:wght@300..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-page="about">
+    <main class="page" id="top">
+      <!-- HERO -->
+      <section class="ahero shell">
+        <p class="eyebrow">On the craft</p>
+        <h1 class="ahero__title display">
+          Programming is just<br />thinking, made <em>tangible.</em>
+        </h1>
+        <p class="ahero__lede lede">
+          Every screen is a small promise, that someone's time, attention, and
+          trust will be handled with care. That promise is the turtle.
+        </p>
+      </section>
+
+      <!-- FLOATING PILLS -->
+      <section class="about-pills" data-pills>
+        <div class="pillcard">
+          <p class="eyebrow">Operating principles</p>
+          <h2 class="pillcard__title display">Build like<br />it matters.</h2>
+          <p class="pillcard__copy">
+            Curiosity. Clarity. The unglamorous
+            details. Here is where care and quaility actually shows.
+          </p>
+        </div>
+        <div class="pill" id="pill-1"><span>Clean Code</span></div>
+        <div class="pill" id="pill-2"><span>turtles</span></div>
+        <div class="pill" id="pill-3"><span>Stay Curious</span></div>
+        <div class="pill" id="pill-4"><span>Pixel Perfect</span></div>
+        <div class="pill" id="pill-5"><span>Build &amp; Break</span></div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section class="testi section shell">
+        <div class="testi__head">
+          <p class="eyebrow">Kind words</p>
+          <h2 class="testi__title display">People I've<br />built with.</h2>
+        </div>
+        <div class="testi__grid">
+          <figure class="quote" data-quote aria-hidden="true"></figure>
+          <figure class="quote" data-quote aria-hidden="true"></figure>
+          <figure class="quote" data-quote aria-hidden="true"></figure>
+        </div>
+      </section>
+    </main>
+
+    <div class="transition" aria-hidden="true">
+      <div class="transition__panel"></div>
+    </div>
+
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>

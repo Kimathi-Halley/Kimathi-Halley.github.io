@@ -1,0 +1,39 @@
+/* ============================================================
+   page transition — pine curtain + organic stroke flourish
+   Panel covers at first paint (no content flash); strokes
+   draw/erase as the signature sweep. Travels upward.
+   ============================================================ */
+
+.transition {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.transition__panel {
+  position: absolute;
+  inset: -1px;
+  background: var(--ink);
+  transform: translateY(0); /* covered at first paint */
+  will-change: transform;
+}
+
+.transition__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.transition__stroke {
+  fill: none;
+}
+
+/* reduced motion: no curtain at all, instant navigation */
+@media (prefers-reduced-motion: reduce) {
+  .transition {
+    display: none;
+  }
+}

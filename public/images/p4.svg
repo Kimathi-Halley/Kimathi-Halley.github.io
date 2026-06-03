@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+  <rect width="800" height="1000" fill="#b9c3a8" />
+  <g fill="none" stroke="#1b3a2e" stroke-width="11">
+    <path d="M-20 230 Q200 150 410 230 T840 230" />
+    <path d="M-20 390 Q200 310 410 390 T840 390" />
+    <path d="M-20 550 Q200 470 410 550 T840 550" />
+    <path d="M-20 710 Q200 630 410 710 T840 710" />
+    <path d="M-20 870 Q200 790 410 870 T840 870" />
+  </g>
+  <circle cx="630" cy="150" r="48" fill="#bc5a3c" />
+</svg>

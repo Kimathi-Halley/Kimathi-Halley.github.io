@@ -1,0 +1,151 @@
+/* ============================================================
+   PROJECTS — page header + hover-reveal card grid
+   ============================================================ */
+
+.phead {
+  padding-top: clamp(7rem, 5rem + 8vw, 11rem);
+  padding-bottom: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+.phead__title {
+  font-size: var(--step-4);
+  font-weight: 330;
+}
+.phead__title em {
+  color: var(--accent);
+}
+.phead__lede {
+  max-width: 46ch;
+}
+
+/* ---- grid ---- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 0.5rem + 1.6vw, 1.8rem);
+  padding-bottom: var(--section-y);
+}
+/* gentle editorial stagger on the middle column */
+.grid .card:nth-child(3n + 2) {
+  transform: translateY(clamp(1rem, 0.5rem + 2vw, 3rem));
+}
+
+.card {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--canvas-deep);
+  outline: 1px solid var(--ink-faint);
+  outline-offset: -1px;
+  transition: outline-color 0.45s var(--ease);
+}
+.card:hover {
+  outline-color: var(--ink);
+}
+.card__media {
+  position: absolute;
+  inset: 0;
+}
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s var(--ease);
+  will-change: transform;
+}
+.card:hover .card__media img {
+  transform: scale(1.045);
+}
+.card__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(27, 58, 46, 0.35) 0%,
+    rgba(27, 58, 46, 0) 32%,
+    rgba(27, 58, 46, 0) 55%,
+    rgba(27, 58, 46, 0.72) 100%
+  );
+  pointer-events: none;
+}
+
+/* strokes (drawn on hover by JS) */
+.card__strokes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.card__stroke {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%) scale(1.5);
+}
+.card__stroke svg {
+  width: 100%;
+  height: 100%;
+}
+.card__stroke path {
+  fill: none;
+}
+
+.card__meta {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(1rem, 0.8rem + 0.8vw, 1.5rem);
+  color: var(--surface);
+  text-shadow: 0 1px 10px rgba(10, 20, 14, 0.4);
+  z-index: 2;
+}
+.card__title {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: clamp(1rem, 0.8rem + 0.8vw, 1.6rem);
+  z-index: 2;
+  overflow: hidden;
+}
+.card__title h3 {
+  color: var(--surface);
+  font-size: var(--step-2);
+  font-weight: 380;
+  line-height: 1;
+}
+.card__title .word {
+  will-change: transform;
+}
+
+/* ---- responsive ---- */
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid .card:nth-child(3n + 2) {
+    transform: none;
+  }
+  .grid .card:nth-child(2n) {
+    transform: translateY(clamp(1rem, 0.5rem + 2vw, 2.5rem));
+  }
+}
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .grid .card:nth-child(2n) {
+    transform: none;
+  }
+  .card {
+    aspect-ratio: 4 / 4.4;
+  }
+}

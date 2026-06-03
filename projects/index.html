@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects — Halley</title>
+    <meta
+      name="description"
+      content="Selected work — interfaces, design systems, and experiments by Halley."
+    />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <style>
+      /* critical boot cover — keeps first paint behind the pine curtain so a
+         full-page navigation never flashes unstyled (esp. in dev) */
+      html,
+      body {
+        margin: 0;
+        background: #c7cfb9;
+      }
+      .transition {
+        position: fixed;
+        inset: 0;
+        z-index: 100000;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .transition__panel {
+        position: absolute;
+        inset: -1px;
+        background: #1b3a2e;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .transition {
+          display: none;
+        }
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Hanken+Grotesk:wght@300..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-page="projects">
+    <main class="page" id="top">
+      <header class="phead shell">
+        <p class="eyebrow"> My work &hearts;</p>
+        <h1 class="phead__title display">
+          Things I've<br /><em>made</em> &amp; broken.
+        </h1>
+        <p class="phead__lede lede">
+          A handful of projects where grand ideas and careful design, shook hands. Go on to take a closer look.
+        </p>
+      </header>
+
+      <section class="grid shell">
+        <a
+          class="card"
+          data-card
+          href="https://dsoleilkafe.com/"
+          target="_blank"
+          rel="noopener"
+          aria-label="Dawne's Soleil Kafé — Caribbean restaurant (opens in a new tab)"
+        >
+          <div class="card__media"><img src="/images/dsoleil.jpg" alt="Dawne's Soleil Kafé website" loading="lazy" /></div>
+          <span class="card__scrim" aria-hidden="true"></span>
+          <div class="card__strokes" aria-hidden="true"></div>
+          <div class="card__meta">
+            <span class="mono">01</span
+            ><span class="mono">Caribbean Restaurant ↗</span>
+          </div>
+          <div class="card__title"><h3>Dawne's Soleil Kafé</h3></div>
+        </a>
+
+        <a
+          class="card"
+          data-card
+          href="https://mrsenterprise.com/index.html"
+          target="_blank"
+          rel="noopener"
+          aria-label="MRS Enterprise — HVAC, plumbing &amp; electrical (opens in a new tab)"
+        >
+          <div class="card__media"><img src="/images/mrs.jpg" alt="MRS Enterprise website" loading="lazy" /></div>
+          <span class="card__scrim" aria-hidden="true"></span>
+          <div class="card__strokes" aria-hidden="true"></div>
+          <div class="card__meta">
+            <span class="mono">02</span
+            ><span class="mono">HVAC · Plumbing · Electrical ↗</span>
+          </div>
+          <div class="card__title"><h3>MRS Enterprise</h3></div>
+        </a>
+
+        <a
+          class="card card--soon"
+          data-card
+          href="#"
+          aria-label="Kaibe — school management system (in progress)"
+        >
+          <div class="card__media"><img src="/images/p1.svg" alt="" /></div>
+          <span class="card__scrim" aria-hidden="true"></span>
+          <div class="card__strokes" aria-hidden="true"></div>
+          <div class="card__meta">
+            <span class="mono">03</span
+            ><span class="mono">School Platform · Soon</span>
+          </div>
+          <div class="card__title"><h3>Kaibe</h3></div>
+        </a>
+      </section>
+    </main>
+
+    <div class="transition" aria-hidden="true">
+      <div class="transition__panel"></div>
+    </div>
+
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>

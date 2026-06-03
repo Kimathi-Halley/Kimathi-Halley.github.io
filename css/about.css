@@ -1,0 +1,160 @@
+/* ============================================================
+   ABOUT — manifesto hero, floating pills, testimonials
+   ============================================================ */
+
+.ahero {
+  padding-top: clamp(7rem, 5rem + 8vw, 11rem);
+  padding-bottom: clamp(2rem, 1.5rem + 3vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  max-width: 60rem;
+}
+.ahero__title {
+  font-size: var(--step-4);
+  font-weight: 320;
+}
+.ahero__title em {
+  color: var(--accent);
+}
+.ahero__lede {
+  max-width: 48ch;
+}
+
+/* ---- floating pills ---- */
+.about-pills {
+  position: relative;
+  width: 100%;
+  padding: clamp(6rem, 4rem + 12vw, 13rem) var(--gutter);
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pillcard {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  width: min(100%, 34rem);
+  background: var(--surface);
+  border: 0.16em solid var(--ink);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 1.5rem + 3vw, 3.6rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+  box-shadow: 0 30px 70px -30px rgba(27, 58, 46, 0.45);
+}
+.pillcard__title {
+  font-size: var(--step-3);
+  font-weight: 340;
+}
+.pillcard__copy {
+  color: var(--ink-soft);
+  max-width: 38ch;
+}
+
+.pill {
+  position: absolute;
+  width: max-content;
+  border-radius: 0.55em;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: clamp(0.82rem, 0.7rem + 0.45vw, 1.05rem);
+  padding: 0.7em 0.95em 0.6em;
+  white-space: nowrap;
+  z-index: 3;
+  box-shadow: 0 16px 34px -16px rgba(27, 58, 46, 0.55);
+  will-change: transform;
+}
+.pill span {
+  display: block;
+  line-height: 1;
+}
+#pill-1 {
+  top: 14%;
+  left: 15%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  background: var(--ink);
+  color: var(--surface);
+}
+#pill-2 {
+  top: 58%;
+  left: 9%;
+  transform: translate(-50%, -50%) rotate(-24deg);
+  background: var(--accent);
+  color: var(--surface);
+}
+#pill-3 {
+  top: 19%;
+  left: 84%;
+  transform: translate(-50%, -50%) rotate(9deg);
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+#pill-4 {
+  top: 84%;
+  left: 17%;
+  transform: translate(-50%, -50%) rotate(16deg);
+  background: var(--canvas-deep);
+  color: var(--ink);
+}
+#pill-5 {
+  top: 79%;
+  left: 85%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  background: var(--ink-soft);
+  color: var(--surface);
+}
+
+/* ---- testimonials ---- */
+.testi__head {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: clamp(2rem, 1.5rem + 3vw, 4rem);
+}
+.testi__title {
+  font-size: var(--step-3);
+}
+.testi__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 0.5rem + 1.6vw, 1.8rem);
+}
+.quote {
+  position: relative;
+  border-radius: var(--radius);
+  padding: clamp(1.6rem, 1.2rem + 1.4vw, 2.4rem);
+  min-height: clamp(13rem, 8rem + 14vw, 19rem);
+  display: flex;
+  align-items: flex-start;
+  background: var(--canvas-deep); /* fallback — JS assigns a brand color */
+  overflow: hidden;
+}
+.quote::before {
+  content: "\201C";
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 0.55;
+  color: var(--qc, var(--surface));
+  opacity: 0.85;
+}
+
+/* ---- responsive ---- */
+@media (max-width: 900px) {
+  .pill {
+    display: none;
+  }
+  .about-pills {
+    min-height: auto;
+    padding-block: clamp(4rem, 3rem + 6vw, 7rem);
+  }
+  .testi__grid {
+    grid-template-columns: 1fr;
+    max-width: 38rem;
+  }
+}
