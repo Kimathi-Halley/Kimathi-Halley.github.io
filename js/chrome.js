@@ -140,30 +140,6 @@ export function mountChrome() {
   wireToTop();
   wireAnchors();
   wireSocialFills();
-  wireFavicon();
-}
-
-// reverse the favicon's colors when the tab isn't in focus
-function wireFavicon() {
-  const ACTIVE = "/favicon.png";
-  const INACTIVE = "/favicon-alt.png";
-  let current = null;
-  const setIcon = (href) => {
-    if (href === current) return;
-    current = href;
-    document.querySelectorAll('link[rel="icon"]').forEach((l) => l.remove());
-    const link = document.createElement("link");
-    link.rel = "icon";
-    link.type = "image/png";
-    link.href = href;
-    document.head.appendChild(link);
-  };
-  const update = () =>
-    setIcon(document.hidden || !document.hasFocus() ? INACTIVE : ACTIVE);
-  document.addEventListener("visibilitychange", update);
-  window.addEventListener("blur", update);
-  window.addEventListener("focus", update);
-  update();
 }
 
 // swap social icons to their filled Phosphor variant on hover
