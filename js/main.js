@@ -35,6 +35,9 @@ if (!reduce) {
 if (page === "home" && !reduce) {
   import("./smudge.js").then((m) => m.initSmudge());
 }
+if (page === "home") {
+  import("./marquee.js").then((m) => m.initMarquee());
+}
 if (page === "projects") {
   import("./image-hover.js").then((m) => m.initImageHover());
 }

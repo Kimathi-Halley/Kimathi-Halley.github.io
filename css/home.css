@@ -92,8 +92,6 @@
 
 /* ---- marquee ---- */
 .marquee {
-  border-top: 1px solid var(--ink-faint);
-  border-bottom: 1px solid var(--ink-faint);
   overflow: hidden;
   padding-block: clamp(0.8rem, 0.6rem + 0.6vw, 1.1rem);
   white-space: nowrap;
@@ -102,7 +100,6 @@
   display: inline-flex;
   align-items: center;
   gap: 1.6rem;
-  animation: marquee 38s linear infinite;
   will-change: transform;
 }
 .marquee__track span {
@@ -111,6 +108,12 @@
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--ink);
+  transition: color 0.25s var(--ease);
+  cursor: default;
+}
+/* hover — the word itself lights up terracotta as the cursor sweeps over it */
+.marquee__track span:hover {
+  color: var(--accent);
 }
 .marquee__track b {
   color: var(--accent);
