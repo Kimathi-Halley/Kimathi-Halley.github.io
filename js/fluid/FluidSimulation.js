@@ -1,4 +1,4 @@
-// GPU Navier-Stokes fluid — ported from the cappen package.
+// GPU Navier-Stokes fluid, ported from the cappen package.
 // Simulation math is unchanged; added lifecycle controls for a
 // multi-page site: enabled/suppressSplat flags, pause on hidden
 // tab, dispose() on navigation, and NON-blocking touch (so the
@@ -138,7 +138,7 @@ export class FluidSimulation {
       this.mouse.moved = true;
     };
     this._onMouseMove = (e) => onMove(e.clientX, e.clientY);
-    // passive touch — do NOT preventDefault, or the page can't scroll on mobile
+    // passive touch, do NOT preventDefault, or the page can't scroll on mobile
     this._onTouchMove = (e) => {
       if (e.touches[0]) onMove(e.touches[0].clientX, e.touches[0].clientY);
     };

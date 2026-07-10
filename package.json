@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Personal portfolio of Halley — built with Vite, GSAP, Lenis & Three.js.",
+  "description": "Personal portfolio of Halley, built with Vite, GSAP, Lenis & Three.js.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

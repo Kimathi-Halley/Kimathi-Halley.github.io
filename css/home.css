@@ -1,5 +1,5 @@
 /* ============================================================
-   HOME — hero, marquee, selected work, philosophy, smudge CTA
+   HOME, hero, selected work, philosophy, smudge CTA
    ============================================================ */
 
 /* ---- hero ---- */
@@ -87,41 +87,6 @@
   }
   50% {
     transform: translateY(5px);
-  }
-}
-
-/* ---- marquee ---- */
-.marquee {
-  overflow: hidden;
-  padding-block: clamp(0.8rem, 0.6rem + 0.6vw, 1.1rem);
-  white-space: nowrap;
-}
-.marquee__track {
-  display: inline-flex;
-  align-items: center;
-  gap: 1.6rem;
-  will-change: transform;
-}
-.marquee__track span {
-  font-family: var(--font-mono);
-  font-size: var(--step-0);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--ink);
-  transition: color 0.25s var(--ease);
-  cursor: default;
-}
-/* hover — the word itself lights up terracotta as the cursor sweeps over it */
-.marquee__track span:hover {
-  color: var(--accent);
-}
-.marquee__track b {
-  color: var(--accent);
-  font-size: 0.8em;
-}
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
   }
 }
 

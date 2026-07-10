@@ -1,5 +1,5 @@
 /* ============================================================
-   chrome — fluid canvas, blurred nav, mobile menu, footer
+   chrome, fluid canvas, blurred nav, mobile menu, footer
    Shared across every page.
    ============================================================ */
 
@@ -15,7 +15,7 @@
 }
 
 /* ============================================================
-   NAVIGATION — PI-style blurred bar (near-invisible on flat clay)
+   NAVIGATION, PI-style blurred bar (near-invisible on flat clay)
    ============================================================ */
 .nav {
   position: fixed;
@@ -118,7 +118,7 @@
 .nav__link.is-active::after {
   transform: scaleX(1);
 }
-/* Home — reversed/filled chip */
+/* Home, reversed/filled chip */
 .nav__link--home {
   background: var(--ink);
   color: var(--surface);
@@ -236,7 +236,7 @@
 .navmenu__list a:hover {
   color: var(--accent);
 }
-/* Home — reversed/filled chip */
+/* Home, reversed/filled chip */
 .navmenu__list a.navmenu__home {
   background: var(--surface);
   color: var(--ink);
@@ -267,7 +267,7 @@
 }
 
 /* ============================================================
-   FOOTER — pine block rising from the clay
+   FOOTER, pine block rising from the clay
    ============================================================ */
 .site-footer {
   position: relative;
@@ -294,7 +294,7 @@
   z-index: 1;
 }
 
-/* Made-in-Antigua stamp — background, slightly left + rotated */
+/* Made-in-Antigua stamp, background, slightly left + rotated */
 .footer__stampbg {
   position: absolute;
   z-index: 0;

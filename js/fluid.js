@@ -51,7 +51,7 @@ export function initFluid() {
   try {
     sim = new FluidSimulation(canvas, config);
   } catch (err) {
-    console.warn("[fluid] WebGL unavailable — disabling trail.", err);
+    console.warn("[fluid] WebGL unavailable, disabling trail.", err);
     canvas.remove();
     sim = null;
     return null;

@@ -25,7 +25,7 @@ mountChrome();
 initTransitions();
 if (page !== "contact") initLenis();
 
-// global fluid trail — dynamic import keeps Three.js in its own chunk and
+// global fluid trail, dynamic import keeps Three.js in its own chunk and
 // off the critical path; skipped entirely under reduced motion
 if (!reduce) {
   import("./fluid.js").then((m) => m.initFluid());
@@ -34,9 +34,6 @@ if (!reduce) {
 // page-specific effects
 if (page === "home" && !reduce) {
   import("./smudge.js").then((m) => m.initSmudge());
-}
-if (page === "home") {
-  import("./marquee.js").then((m) => m.initMarquee());
 }
 if (page === "projects") {
   import("./image-hover.js").then((m) => m.initImageHover());

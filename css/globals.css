@@ -1,19 +1,19 @@
 /* ============================================================
-   HALLEY — globals
+   HALLEY, globals
    Design tokens, reset, base typography, atmosphere
    ============================================================ */
 
 :root {
   /* ---- palette: one canvas, one ink, one accent ---- */
-  --canvas:        #c7cfb9;            /* light clay green — dominant surface */
+  --canvas:        #c7cfb9;            /* light clay green, dominant surface */
   --canvas-deep:   #b9c3a8;            /* deeper clay for quiet bands         */
-  --ink:           #1b3a2e;            /* deep pine green — text & dark surfaces */
+  --ink:           #1b3a2e;            /* deep pine green, text & dark surfaces */
   --ink-soft:      #2e4a3c;            /* secondary text                      */
   --ink-faint:     rgba(27, 58, 46, 0.16); /* hairlines                       */
   --ink-ghost:     rgba(27, 58, 46, 0.55);
-  --accent:        #bc5a3c;            /* terracotta — the single accent      */
+  --accent:        #bc5a3c;            /* terracotta, the single accent      */
   --accent-deep:   #9c4630;
-  --surface:       #ece5d3;            /* warm ivory — cards, footer text      */
+  --surface:       #ece5d3;            /* warm ivory, cards, footer text      */
   --surface-warm:  #e7e3d4;
   --glass:         rgba(199, 207, 185, 0.10); /* nav backdrop tint           */
   --glass-line:    rgba(27, 58, 46, 0.10);

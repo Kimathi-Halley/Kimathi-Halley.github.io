@@ -37,7 +37,7 @@ function navMarkup(active) {
   return `
   <nav class="nav" data-nav aria-label="Primary">
     <div class="nav__pill">
-      <a class="nav__brand" href="/" aria-label="Halley — home">
+      <a class="nav__brand" href="/" aria-label="Home">
         <span class="nav__logo"></span>
       </a>
       <ul class="nav__menu">${links}</ul>
@@ -61,7 +61,7 @@ function menuMarkup(active) {
   <div class="navmenu" id="navmenu" data-navmenu aria-hidden="true">
     <ul class="navmenu__list">${links}</ul>
     <div class="navmenu__foot">
-      <span class="mono">Halley — Antigua</span>
+      <span class="mono">Halley · Antigua</span>
       <div class="navmenu__socials">${socials}</div>
     </div>
   </div>`;
@@ -80,7 +80,7 @@ function footerMarkup() {
     <div class="footer__inner">
       <img class="footer__stampbg" src="/brand/made-in-antigua-grey.png" alt="" aria-hidden="true" />
       <div class="footer__head">
-        <a class="footer__logo-link" href="/" aria-label="Halley — home"><span class="footer__logo"></span></a>
+        <a class="footer__logo-link" href="/" aria-label="Home"><span class="footer__logo"></span></a>
       </div>
       <div class="footer__bar">
         <div class="footer__contact">
@@ -95,7 +95,7 @@ function footerMarkup() {
       </div>
       <nav class="footer__nav" aria-label="Footer">${navLinks}</nav>
       <div class="footer__copy">
-        <p>&copy; 2026 Halley — All rights reserved.</p>
+        <p>&copy; 2026 Halley · All rights reserved.</p>
         <a class="footer__totop" href="#top" data-totop><span class="mono">Back to top</span> <i class="ph ph-arrow-up"></i></a>
       </div>
     </div>
