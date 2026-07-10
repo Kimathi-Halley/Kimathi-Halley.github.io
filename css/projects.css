@@ -38,6 +38,11 @@
   aspect-ratio: 4 / 5;
   border-radius: var(--radius);
   overflow: hidden;
+  /* the animated stroke layers get composited and can escape a rounded
+     overflow clip; isolate the card and clip explicitly so the hover
+     strokes stay inside the corners */
+  isolation: isolate;
+  clip-path: inset(0 round var(--radius));
   background: var(--canvas-deep);
   outline: 1px solid var(--ink-faint);
   outline-offset: -1px;
